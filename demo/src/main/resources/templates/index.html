@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Greeting Demo</title>
+</head>
+<body>
+<h1>Greeting Demo</h1>
+
+<form method="post" action="/greet">
+    <input type="text" name="name" placeholder="Enter your name">
+    <button type="submit">Greet</button>
+</form>
+
+<p th:if="${message}" th:text="${message}"></p>
+</body>
+</html>
