@@ -13,4 +13,18 @@ public class GreetingServiceTest {
         String result = greetingService.greet("Praveen");
         assertEquals("Hello, Praveen!", result);
     }
+
+
+    @Test
+    void testGreetWithNull() {
+        String result = greetingService.greet(null);
+        assertEquals("Hello, Guest!", result);
+    }
+
+    @Test
+    void testGreetWithEmpty() {
+        String result = greetingService.greet("");
+        assertEquals("Hello, Guest!", result);
+    }
+
 }
