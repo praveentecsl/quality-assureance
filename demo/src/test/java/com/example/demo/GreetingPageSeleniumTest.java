@@ -33,7 +33,7 @@ public class GreetingPageSeleniumTest {
 
         ChromeOptions options = new ChromeOptions();
         // REMOVE headless mode to see the browser
-        // options.addArguments("--headless");
+        options.addArguments("--headless");
         options.addArguments("--disable-gpu");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
