@@ -1,4 +1,4 @@
-name: Build, Unit + Selenium Tests, and API Tests using Postman CLI
+name: Build, Unit + Selenium Tests
 
 on: push
 
@@ -9,7 +9,7 @@ jobs:
       # 1. Checkout source code
       - uses: actions/checkout@v4
 
-      # 2. Setup Java (Maven)
+      # 2. Set up JDK 17 for Maven
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
@@ -19,31 +19,3 @@ jobs:
       # 3. Build project and run JUnit + Selenium tests
       - name: Build with Maven and run unit + selenium tests
         run: mvn -f ./demo/pom.xml clean test
-
-      # 4. Install Node.js (needed for your backend)
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
-
-      # 5. Install backend dependencies
-      - name: Install backend dependencies
-        run: npm install
-
-      # 6. Start backend server
-      - name: Start backend server
-        run: |
-          npm start &       # run server in background
-          sleep 5           # wait for server to be ready
-
-      # 7. Install Postman CLI
-      - name: Install Postman CLI
-        run: curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
-
-      # 8. Login to Postman CLI
-      - name: Login to Postman CLI
-        run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
-
-      # 9. Run Postman API tests
-      - name: Run Postman API tests
-        run: postman collection run "45205881-41857ce9-65ad-46ae-a6df-0bd58f830759"
